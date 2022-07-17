@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {auth} from './../firebase.js';
-import {createUserWithEmailAndPassword} from 'firebase/auth';
+import {signInWithEmailAndPassword} from 'firebase/auth';
 
 class Login extends Component {
     state = {
@@ -10,20 +10,22 @@ class Login extends Component {
         password: "",
     }; 
 
-    handleSignUp = () => {
+    handleLogin = () => {
         const {email, password} = this.state;
-        console.log("Sign Up");
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in
-        console.log("Signed In")
-          })
-
+        console.log("Login");
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+    // Signed inc
+        const user = userCredential.user;
+        console.log(userCredential);
+    // ...
+        })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorMessage);
-          });
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage);  
+  });
+
         }; 
 
     updateField = ({ target }) => {
@@ -37,7 +39,7 @@ class Login extends Component {
     return (
         <div>
         <div> Login Page </div >
-        <Form>
+        <Form onSubmit={e => { e.preventDefault();}}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" 
@@ -53,7 +55,7 @@ class Login extends Component {
         value={password}
         onChange={this.updateField}/>
       </Form.Group>
-      <Button onClick={() => this.handleSignUp()} variant="primary" type="submit">
+      <Button onClick={() => this.handleLogin()} variant="primary" type="submit">
         Submit
       </Button>
     </Form>
