@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Intro to Artifical Intelligence", 
+        "category": "CS", 
+        "number": 800,
+        "faculty": "Prof Smith"
+    },
+    {
+        "name": "Intro to Computer Vision", 
+        "category": "CS", 
+        "number": 300,
+        "faculty": "Prof Smith"
+    },
+    {
+        "name": "Intro to Business", 
+        "category": "MBA", 
+        "number": 800,
+        "faculty": "Prof Smith"
+    },
+    {
+        "name": "Intro to Information Science", 
+        "category": "Info", 
+        "number": 800,
+        "faculty": "Prof Smith"
+    }
+] 
