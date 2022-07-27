@@ -47,27 +47,13 @@ export default function CourseFilter() {
     setSubject(event.target.value);
     };  
 
-    const {
-        getRootProps,
-        getInputLabelProps,
-        getInputProps,
-        getListboxProps,
-        getOptionProps,
-        groupedOptions,
-      } = useAutocomplete({
+    const courseNumber = useAutocomplete({
         id: 'use-autocomplete-demo',
         options: courses,
         getOptionLabel: (option) => option.number,
       });
 
-    const {
-        getRootPropsName,
-        getInputLabelPropsName,
-        getInputPropsName,
-        getListboxPropsName,
-        getOptionPropsName,
-        groupedOptionsName,
-      } = useAutocomplete({
+      const courseName = useAutocomplete({
         id: 'use-autocomplete-demo',
         options: courses,
         getOptionLabel: (option) => option.name,
@@ -92,23 +78,23 @@ export default function CourseFilter() {
       </FormControl>
     </Box>
 
-    <div {...getRootProps()}>
-        <Input {...getInputProps()} />
+    <div {...courseNumber.getRootProps()}>
+        <Input {...courseNumber.getInputProps()} />
     </div>
-      {groupedOptions.length > 0 ? (
-        <Listbox {...getListboxProps()}>
-          {groupedOptions.map((option, index) => (
-            <li {...getOptionProps({ option, index })}>{option.number}</li>
+      {courseNumber.groupedOptions.length > 0 ? (
+        <Listbox {...courseNumber.getListboxProps()}>
+          {courseNumber.groupedOptions.map((option, index) => (
+            <li {...courseNumber.getOptionProps({ option, index })}>{option.number}</li>
           ))}
         </Listbox>
       ) : null}
-    <div {...getRootProps()}>
-        <Input {...getInputProps()} />
+    <div {...courseName.getRootProps()}>
+        <Input {...courseName.getInputProps()} />
       </div>
-      {groupedOptions.length > 0 ? (
-        <Listbox {...getListboxProps()}>
-          {groupedOptions.map((option, index) => (
-            <li {...getOptionProps({ option, index })}>{option.name}</li>
+      {courseName.groupedOptions.length > 0 ? (
+        <Listbox {...courseName.getListboxProps()}>
+          {courseName.groupedOptions.map((option, index) => (
+            <li {...courseName.getOptionProps({ option, index })}>{option.name}</li>
           ))}
         </Listbox>
       ) : null}

@@ -1,9 +1,9 @@
-import Card from "./Card"; 
+import CourseCard from "./CourseCard"; 
 
 const CourseList = ({ courses }) => {
     console.log(courses); 
   const cardsArray = courses.map((course, idx) => (
-      <Card course={course}/>
+      <CourseCard course={course}/>
   ));
 
   return (

@@ -1,0 +1,18 @@
+.CourseCardContent{
+text-align:center;
+background-color: #fffcf4;
+margin: 10px 50px;
+box-shadow: 5px 5px 2px lightgrey;
+}
+
+.CourseRating{
+background-color: #ffe598;
+background-clip: content-box;
+padding: 3px;
+}
+
+.CourseBG{
+background-color: #fce5cd;
+background-clip: content-box;
+padding: 3px;
+}
