@@ -7,6 +7,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useAutocomplete } from '@mui/base/AutocompleteUnstyled';
 import { styled } from '@mui/material/styles';
 import { autocompleteClasses } from '@mui/material/Autocomplete';
+import CourseListJson from "./CourseListJson";
+import CourseList from './CourseList';
 
 const Label = styled('label')({
     display: 'block',
@@ -40,23 +42,29 @@ const Label = styled('label')({
     },
   }));
 
-export default function CourseFilter() {
+export default function CourseFilter({setCourseName}) {
   const [subject, setSubject] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
     setSubject(event.target.value);
     };  
 
+    const setCourseTag = (e, value) => {
+      console.log(value);
+      setCourseName(value.name);
+      };  
+
     const courseNumber = useAutocomplete({
         id: 'use-autocomplete-demo',
-        options: courses,
+        options: CourseListJson,
         getOptionLabel: (option) => option.number,
       });
 
       const courseName = useAutocomplete({
         id: 'use-autocomplete-demo',
-        options: courses,
+        options: CourseListJson,
         getOptionLabel: (option) => option.name,
+        onChange: setCourseTag
       });
 
   return (
@@ -103,9 +111,3 @@ export default function CourseFilter() {
   );
 }
 
-const courses = [
-    {'number': 'CS500', 'name': 'Intro to AI'},
-    {'number': 'CS300', 'name': 'Intro to ML'},
-    {'number': 'MBA001', 'name': 'Intro to Business'},
-    {'number': 'INFO200', 'name': 'Intro to INFO'},
-]

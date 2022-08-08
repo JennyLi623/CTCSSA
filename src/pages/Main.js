@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -7,16 +7,17 @@ import CourseFilter from "./CourseFilter";
 import CourseList from "./CourseList";
 import CourseListJson from "./CourseListJson";
 
-class Main extends Component {
-  render() {
+function Main() {
+
+  const [courseName, setCourseName] = useState('');
+  console.log(courseName); 
     return (
         <div>
-          <CourseFilter />
-          <CourseList courses={CourseListJson}/>
+          <CourseFilter setCourseName={setCourseName}/>
+          <CourseList courses={CourseListJson} courseName={courseName}/>
         </div>
 
     );
   }
-}
 
 export default Main;

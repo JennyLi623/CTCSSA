@@ -1,8 +1,9 @@
 import CourseCard from "./CourseCard"; 
 
-const CourseList = ({ courses }) => {
+const CourseList = ({ courses, courseName }) => {
     console.log(courses); 
-  const cardsArray = courses.map((course, idx) => (
+  const cardsArray = courses.filter(course => (course.name.includes(courseName))).map((course, idx) => (
+
       <CourseCard course={course}/>
   ));
 
