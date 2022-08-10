@@ -4,10 +4,8 @@ import Main from "./Main.js";
 import Login from "./Login.js";
 import Register from "./Register.js"; 
 
-class Content extends Component {
-  
-  
-  render() {
+function Content() {
+
     return (
         <Routes>
         <Route path="/register" element={<Register />} />
@@ -15,7 +13,6 @@ class Content extends Component {
         <Route path="/" element={<Main />} />
       </Routes>
     );
-  }
 }
 
 export default Content;

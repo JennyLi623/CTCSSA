@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {auth} from './../firebase.js';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 
-class Register extends Component {
-    state = {
-        email: "",
-        password: "",
-    }; 
 
-    handleSignUp = () => {
-        const {email, password} = this.state;
+function Register() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+
+  const handleSignUp = () => {
         console.log("Sign Up");
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -24,16 +24,17 @@ class Register extends Component {
             const errorMessage = error.message;
             console.log(errorMessage);
           });
-        }; 
+        };
 
-    updateField = ({ target }) => {
+  const updateField = ({ target }) => {
         const { name, value } = target;
-        this.setState({ [name]: value });
-        console.log(this.state);
+        if (name === 'email') {
+          setEmail(value);
+        }
+        else {
+          setPassword(value);
+        }
     };
-
-    render() {
-        const {email, password} = this.state;
     return (
         <div>
         <div> Register Page </div >
@@ -44,7 +45,7 @@ class Register extends Component {
             
             name="email"
             value={email}
-            onChange={this.updateField}/>
+            onChange={updateField}/>
 
       </Form.Group>
 
@@ -53,15 +54,15 @@ class Register extends Component {
         <Form.Control type="password" placeholder="Password" 
         name="password"
         value={password}
-        onChange={this.updateField}/>
+        onChange={updateField}/>
       </Form.Group>
-      <Button onClick={() => this.handleSignUp()} variant="primary" type="submit">
+      <Button onClick={() => handleSignUp()} variant="primary" type="submit">
         Submit
       </Button>
     </Form>
     </div>
     );
-  }
+  
 }
 
 export default Register;

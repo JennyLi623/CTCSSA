@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
 import {Navbar, Nav} from 'react-bootstrap';
 
-class NavBar extends Component {
-  render() {
+function NavBar() {
+   
     return (
       <Navbar style={{background: "burlywood"}} variant="dark" expand="lg">
         <Link to="/" style={{ textDecoration: 'none' }}><Navbar.Brand>FoodieJoy</Navbar.Brand></Link>
@@ -29,7 +29,7 @@ class NavBar extends Component {
         </Navbar.Collapse>
       </Navbar>
     );
-  }
+  
 }
 
 export default NavBar;

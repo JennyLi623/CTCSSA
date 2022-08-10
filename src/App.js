@@ -4,14 +4,8 @@ import './App.css';
 import NavBar from './pages/NavBar';
 import Content from './pages/Content'; 
 
-class App extends Component {
-  constructor(props){
-    super(props); 
-
-    this.state = {}; 
-    }
-
-  render() {
+function App() {
+   
     return (
       <div>
         <NavBar /> 
@@ -22,6 +16,6 @@ class App extends Component {
   }
 
 
-}
+
 
 export default App;

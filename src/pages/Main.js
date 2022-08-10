@@ -10,7 +10,7 @@ import CourseListJson from "./CourseListJson";
 function Main() {
 
   const [courseName, setCourseName] = useState('');
-  console.log(courseName); 
+  console.log(courseName);
     return (
         <div>
           <CourseFilter setCourseName={setCourseName}/>
